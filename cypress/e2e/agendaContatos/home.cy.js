@@ -2,11 +2,9 @@
 
 describe('Testes para home', () => {
     beforeEach(() => {
-
         cy.visit('https://agenda-contatos-react.vercel.app/');
         cy.contains('Agenda de contatos').should('exist');
     });
-
 
     it('deve incluir um contato', () => {
         cy.get('input[placeholder="Nome"]').type('Novo Contato');
@@ -32,7 +30,8 @@ describe('Testes para home', () => {
 
     it('deve remover um contato', () => {
         cy.contains('Contato Editado').should('exist').then(() => {
-            cy.get('li').contains('Contato Editado').parent().find('button.delete').click();
+            cy.get('li').contains('Contato Editado');
+            cy.get('button.delete').contains('Deletar').click();
         });
 
         cy.contains('Contato Editado').should('not.exist');
